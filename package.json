@@ -24,7 +24,14 @@
 	"homepage": "https://github.com/pattanunNP/strapi-google-cloud-storage#readme",
 	"author": "pattanunNP",
 	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^16.7.13",
+		"typescript": "^5.3.3",
+		"@tsconfig/node16": "^16.1.1"
+	},
 	"dependencies": {
-		"@google-cloud/storage": "^7.7.0"
+		"@google-cloud/storage": "^7.7.0",
+		"@types/uuid": "^9.0.7",
+		"uuid": "^9.0.1"
 	}
 }
