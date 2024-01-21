@@ -1,0 +1,30 @@
+{
+	"name": "strapi-google-cloud-storage",
+	"version": "1.0.0",
+	"description": "A storage provider for upload assets to google cloud storage complatible with strapi ",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc"
+	},
+	"directories": {
+		"lib": "./lib"
+	},
+	"keywords": [
+		"Strapi",
+		"Google Cloud Storage",
+		"Storage Provider"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com:pattanunNP/strapi-google-cloud-storage.git"
+	},
+	"bugs": {
+		"url": "https://github.com/pattanunNP/strapi-google-cloud-storage/issues"
+	},
+	"homepage": "https://github.com/pattanunNP/strapi-google-cloud-storage#readme",
+	"author": "pattanunNP",
+	"license": "MIT",
+	"dependencies": {
+		"@google-cloud/storage": "^7.7.0"
+	}
+}
