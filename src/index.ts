@@ -194,7 +194,7 @@ module.exports = {
         return{
             uploadFile:(file: File) => uploadFile(file),
             uploadStream: (file: File) => uploadFile(file),
-            deleteFile: (file: File) => {
+            delete: (file: File) => {
                 new Promise((resolve, reject) => {
                     const fileRef = getFileRef(file);
                     fileRef.delete((error) => {
