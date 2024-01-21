@@ -26,36 +26,46 @@ yarn add strapi-google-cloud-storage
 
 2. **Create a Bucket:** Create a bucket in Google Cloud Storage where your files will be stored.
 
-3. **Setup Strapi Provider:** In your Strapi project, configure the provider in `config/plugins.js`:
+3. **Setup Strapi Provider:** In your Strapi project, configure the provider in `config/plugins.js`: or `config/plugins.ts` 
 
    ```javascript
    module.exports = {
-     // ...
-     upload: {
-       provider: 'google-cloud-storage',
-       providerOptions: {
-         bucketName: 'your-bucket-name',
-         publicFiles: true,
-         uniform: false,
-         basePath: '',
-         serviceAccount: {
-           type: 'service_account',
-           project_id: 'your-project-id',
-           private_key_id: 'your-private-key-id',
-           private_key: 'your-private-key',
-           client_email: 'your-client-email',
-           client_id: 'your-client-id',
-           auth_uri: 'https://accounts.google.com/o/oauth2/auth',
-           token_uri: 'https://oauth2.googleapis.com/token',
-           auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-           client_x509_cert_url: 'your-cert-url'
-         },
-       },
-     },
-     // ...
+   	// ...
+   	upload: {
+   		config: {
+   			provider: "strapi-google-cloud-storage",
+   			providerOptions: {
+   				bucket: "your-bucket-name",
+          sortInStorage: true,
+          debug: true,
+   				serviceAccount: {
+   					type: "service_account",
+   					project_id: "your-project-id",
+   					private_key_id: "your-private-key-id",
+   					private_key: "your-private-key",
+   					client_email: "your-client-email",
+   					client_id: "your-client-id",
+   					auth_uri: "https://accounts.google.com/o/oauth2/auth",
+   					token_uri: "https://oauth2.googleapis.com/token",
+   					auth_provider_x509_cert_url:
+   						"https://www.googleapis.com/oauth2/v1/certs",
+   					client_x509_cert_url: "your-cert-url",
+   				},
+   			},
+   		},
+   	},
+   	// ...
    };
    ```
 
+    or
+  
+    ```typescript
+
+   
+    
+
+    ```
 ## Usage
 
 Once configured, the Strapi media library will automatically use Google Cloud Storage to store new files. You can upload, view, and delete files from your Strapi admin panel.
