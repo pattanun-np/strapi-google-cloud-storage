@@ -1,4 +1,4 @@
-# strapi-google-cloud-storage
+# strapi-google-cloud-storage [![Publish Package](https://github.com/pattanunNP/strapi-google-cloud-storage/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/pattanunNP/strapi-google-cloud-storage/actions/workflows/npm-publish.yml)
 
 This package provides a convenient way to integrate Google Cloud Storage with Strapi, an open-source headless CMS. It allows you to upload and manage your media files on Google Cloud Storage directly from your Strapi admin panel.
 
