@@ -1,6 +1,6 @@
 {
 	"name": "strapi-google-cloud-storage",
-	"version": "1.0.1",
+	"version": "0.1.2",
 	"description": "A storage provider for upload assets to google cloud storage complatible with strapi ",
 	"main": "dist/index.js",
 	"scripts": {
