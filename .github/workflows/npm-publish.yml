@@ -1,22 +1,39 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Publish Package
+name: Release to Private NPM
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'  # Only trigger on tags starting with "v", e.g., v1.0.0
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - run: npm install
-      - run: npm run build
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+          node-version: '16'  # Use the version of Node.js your project requires
+          registry-url: 'https://registry.npmjs.org'  # Replace with your private registry URL if needed
+
+      - name: Configure NPM authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          # Use the private registry URL if different from npmjs.org
+          # echo "//my-private-registry.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build  # Adjust if your project uses a different build command
+
+      - name: Publish to private NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm version $(git tag --points-at HEAD)  # Set package.json version to match the tag
+          npm publish --access=restricted  # Add --registry if different from npmjs.org
